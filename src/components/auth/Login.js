@@ -19,7 +19,7 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history("/")
     } catch {
       setError("Failed to log in")
     }
@@ -42,7 +42,7 @@ export default function Login() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" ref={passwordRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100 bg-success outline-none" style={{ margin: "15px 0", border: "none"}} type="submit">
+            <Button disabled={loading} variant="success" className="w-100" style={{ margin: "15px 0"}} type="submit">
               Log In
             </Button>
           </Form>

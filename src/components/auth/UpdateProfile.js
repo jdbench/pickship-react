@@ -32,7 +32,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/user")
+        history("/user")
       })
       .catch(() => {
         setError("Failed to update account")
@@ -74,7 +74,7 @@ export default function UpdateProfile() {
                 placeholder="Leave blank to keep the same"
               />
             </Form.Group>
-            <Button disabled={loading} className="w-100 bg-success outline-none" style={{ margin: "15px 0", border: "none"}} type="submit">
+            <Button disabled={loading} className="w-100" variant="success" style={{ margin: "15px 0"}} type="submit">
               Update
             </Button>
           </Form>

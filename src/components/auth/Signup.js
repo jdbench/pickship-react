@@ -24,9 +24,10 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      setError("You successfully created an account")
+      history("/")
     } catch {
-      setError("Failed to create an account")
+      setError(`Failed to create an account`)
     }
 
     setLoading(false)
@@ -51,7 +52,7 @@ export default function Signup() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100 bg-success outline-none" style={{ margin: "15px 0", border: "none"}} type="submit">
+            <Button disabled={loading} variant="success" className="w-100" style={{ margin: "15px 0"}} type="submit">
               Sign Up
             </Button>
           </Form>
