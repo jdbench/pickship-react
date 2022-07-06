@@ -14,7 +14,6 @@ export default function Profile() {
 
     try {
       await logout()
-      history("/login")
     } catch {
       setError("Failed to log out")
     }
