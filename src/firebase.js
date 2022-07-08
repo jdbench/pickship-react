@@ -16,7 +16,11 @@ export const database = {
   locations: firestore.collection('locations'),
   products: firestore.collection('products'),
   picklist: firestore.collection('picklist'),
-  accounts: firestore.collection('accounts')
+  accounts: firestore.collection('accounts'),
+  getCurrentTimestame: firebase.firestore.FieldValue.serverTimestamp,
+  formatDoc: doc=> {
+    return { id: doc.id, ...doc.data() }
+  }
 }
 export const auth = app.auth()
 export default app

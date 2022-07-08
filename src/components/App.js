@@ -9,7 +9,7 @@ import UpdateProfile from "./auth/UpdateProfile";
 import ForgotPassword from "./auth/ForgotPassword";
 import Locations from "./pickship/locations/Locations";
 import Picklist from "./pickship/picklist/Picklist";
-import Products from "./products/Products";
+import Products from "./pickship/products/Products";
 import PrivateRoute from "./auth/PrivateRoute";
 import Profile from "./auth/Profile";
 

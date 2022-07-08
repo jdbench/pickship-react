@@ -3,16 +3,21 @@ import { Button, Modal, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus } from '@fortawesome/free-solid-svg-icons';
 import { database } from '../../../firebase';
+import { useAuth } from '../../../contexts/AuthContext'
 
 export default function AddLocationButton() {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
+    const { currentUser } = useAuth()
+
     function openModal(){
       setOpen(true);
     }
+
     function closeModal(){
       setOpen(false);
     }
+
     function handleSubmit(e){
       e.preventDefault()
 
@@ -20,6 +25,10 @@ export default function AddLocationButton() {
 
       database.locations.add({
         name: name,
+        //parentId,
+        userId: currentUser.uid,
+        //path,
+        createdAt: database.getCurrentTimestame(),
       })
 
       setName("")
