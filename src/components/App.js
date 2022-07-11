@@ -12,49 +12,55 @@ import Picklist from "./pickship/picklist/Picklist";
 import Products from "./pickship/products/Products";
 import PrivateRoute from "./auth/PrivateRoute";
 import Profile from "./auth/Profile";
+import { AppBridgeProvider } from "./providers/AppBridgeProvider";
+import { GraphQLProvider } from "./providers/GraphQLProvider";
 
 function App() {
   return (
       <Router>
-        <AuthProvider>
-          <div className="App">
-            <Navbar />
-            <div className="content">
-              <Routes>
-                {/* PickShip */}
-                <Route exact path='/' element={<PrivateRoute>
-                                                <Dashboard/>
-                                              </PrivateRoute>}>
-                </Route>
-                <Route exact path='/locations' element={<PrivateRoute>
-                                                        <Locations/>
-                                                      </PrivateRoute>}>
-                </Route>
-                <Route exact path='/products' element={<PrivateRoute>
-                                                        <Products/>
-                                                      </PrivateRoute>}>
-                </Route>
-                <Route exact path='/picklist' element={<PrivateRoute>
-                                                        <Picklist/>
-                                                      </PrivateRoute>}>
-                </Route>
-                {/* Profile */}
-                <Route exact path='/user' element={<PrivateRoute>
-                                                    <Profile/>
+        <AppBridgeProvider>
+          <GraphQLProvider>
+            <AuthProvider>
+              <div className="App">
+                <Navbar />
+                <div className="content">
+                  <Routes>
+                    {/* PickShip */}
+                    <Route exact path='/' element={<PrivateRoute>
+                                                    <Dashboard/>
                                                   </PrivateRoute>}>
-                </Route>
-                <Route exact path='/update-profile' element={<PrivateRoute>
-                                                              <UpdateProfile/>
-                                                            </PrivateRoute>}>
-                </Route>
-                {/* Auth */}
-                <Route exact path="/signup" element={<Signup />}/>
-                <Route exact path="/login" element={<Login />}/>
-                <Route exact path="/forgot-password" element={<ForgotPassword />}/>
-              </Routes>
-            </div>
-          </div>
-        </AuthProvider>
+                    </Route>
+                    <Route exact path='/locations' element={<PrivateRoute>
+                                                            <Locations/>
+                                                          </PrivateRoute>}>
+                    </Route>
+                    <Route exact path='/products' element={<PrivateRoute>
+                                                            <Products/>
+                                                          </PrivateRoute>}>
+                    </Route>
+                    <Route exact path='/picklist' element={<PrivateRoute>
+                                                            <Picklist/>
+                                                          </PrivateRoute>}>
+                    </Route>
+                    {/* Profile */}
+                    <Route exact path='/user' element={<PrivateRoute>
+                                                        <Profile/>
+                                                      </PrivateRoute>}>
+                    </Route>
+                    <Route exact path='/update-profile' element={<PrivateRoute>
+                                                                  <UpdateProfile/>
+                                                                </PrivateRoute>}>
+                    </Route>
+                    {/* Auth */}
+                    <Route exact path="/signup" element={<Signup />}/>
+                    <Route exact path="/login" element={<Login />}/>
+                    <Route exact path="/forgot-password" element={<ForgotPassword />}/>
+                  </Routes>
+                </div>
+              </div>
+            </AuthProvider>
+          </GraphQLProvider>
+        </AppBridgeProvider>
       </Router>
   );
 }
